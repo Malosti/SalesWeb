@@ -26,10 +26,10 @@ namespace SalesWebMVC.Data
                 return; // O banco de dados ja foi populado
             }
             //Criando os objetos a serem adicionados
-            Department d1 = new Department(1,"Computers");
-            Department d2 = new Department(2,"Electronics");
-            Department d3 = new Department(3,"Fashion");
-            Department d4 = new Department(4,"Books");
+            Department d1 = new Department("Computers");
+            Department d2 = new Department("Electronics");
+            Department d3 = new Department("Fashion");
+            Department d4 = new Department("Books");
 
             Seller s1 = new Seller("Bob Brown", "bob@gmail.com", new DateTime(1998, 4, 21), 1000.0, d1);
             Seller s2 = new Seller("Maria Green", "maria@gmail.com", new DateTime(1979, 12, 31), 3500.0, d2);
