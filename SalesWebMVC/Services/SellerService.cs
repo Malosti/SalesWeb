@@ -25,6 +25,7 @@ namespace SalesWebMVC.Services
 
         public void Insert(Seller obj)
         {
+            obj.Department = _context.Department.First();
             //Adiocionando um novo vendedor no banco
             _context.Add(obj);
             //Confirmando a inclusão no banco
