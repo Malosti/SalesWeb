@@ -4,10 +4,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SalesWebMVC.Migrations
 {
-    public partial class otherEntities : Migration
+    public partial class initialUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Department",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Department", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Seller",
                 columns: table => new
@@ -39,7 +52,7 @@ namespace SalesWebMVC.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Date = table.Column<DateTime>(nullable: false),
                     Amount = table.Column<double>(nullable: false),
-                    StautsId = table.Column<int>(nullable: true),
+                    Status = table.Column<int>(nullable: false),
                     SellerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -51,23 +64,12 @@ namespace SalesWebMVC.Migrations
                         principalTable: "Seller",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_SalesRecord_SalesRecord_StautsId",
-                        column: x => x.StautsId,
-                        principalTable: "SalesRecord",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_SalesRecord_SellerId",
                 table: "SalesRecord",
                 column: "SellerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SalesRecord_StautsId",
-                table: "SalesRecord",
-                column: "StautsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Seller_DepartmentId",
@@ -82,6 +84,9 @@ namespace SalesWebMVC.Migrations
 
             migrationBuilder.DropTable(
                 name: "Seller");
+
+            migrationBuilder.DropTable(
+                name: "Department");
         }
     }
 }
