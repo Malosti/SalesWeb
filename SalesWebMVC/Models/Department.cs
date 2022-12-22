@@ -15,7 +15,6 @@ namespace SalesWebMVC.Models
         }
         public Department(string name)
         {
-            
             Name = name;
         }
 

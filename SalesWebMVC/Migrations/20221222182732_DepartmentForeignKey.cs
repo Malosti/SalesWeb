@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SalesWebMVC.Migrations
 {
-    public partial class initialUpdate : Migration
+    public partial class DepartmentForeignKey : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
